@@ -1,0 +1,11 @@
+#!/bin/bash
+
+sudo dpkg --purge packages-microsoft-prod && sudo dpkg -i packages-microsoft-prod.deb
+sudo apt-get update
+sudo apt-get install $VERSION
+
+if [ $? -eq 0 ]; then
+    cecho "GREEN" "$VERSION successfully installed"
+else
+    cecho "YELLOW" "Oops! It seems like I've ran into some kind of trouble. But don't worry! There's still hope.."
+    source netcoresdk_complex_fallback.sh    
